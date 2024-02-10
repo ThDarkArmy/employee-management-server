@@ -26,7 +26,7 @@ public class MailSenderService {
 
         mimeMessageHelper.setText("Hi "+user.getName());
 
-        String mailBody = "<h3>Hi "+user.getName()+",</h3><br/>"+"<h3>Otp to verify "+mailBodyString+"</h3>";
+        String mailBody = "<h3>Hi "+user.getName()+",</h3><br/>"+"<h3>Click on the below link to verify email</h3><br/><br/><a href='http://localhost:8000/api/v1/users/verify-otp/"+mailBodyString+"/"+user.getEmail()+"'>Click to Verify</a>";
 
         mimeMessageHelper.setText(mailBody, true);
         javaMailSender.send(mimeMessageHelper.getMimeMessage());

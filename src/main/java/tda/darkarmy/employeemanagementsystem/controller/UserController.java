@@ -36,9 +36,9 @@ public class UserController {
         return status(201).body(userService.signup(userDto));
     }
 
-    @PostMapping("/verify-otp")
-    public ResponseEntity<?> verifyOtp(@RequestBody VerifyOtpDto verifyOtpDto) {
-        return status(201).body(userService.verifyOtp(verifyOtpDto.getEmail(), verifyOtpDto.getOtp()));
+    @GetMapping("/verify-otp/{otp}/{email}")
+    public ResponseEntity<?> verifyOtp(@PathVariable("otp") String otp, @PathVariable("email") String email) {
+        return status(201).body(userService.verifyOtp(email, Long.parseLong(otp)));
     }
 
     @PostMapping("/verify-otp-password")
